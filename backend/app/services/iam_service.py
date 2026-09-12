@@ -58,7 +58,7 @@ class ZeroTrustIAMService:
             }
         return {}
 
-    def fetch_cluster_metrics(self, cluster_id: str = "k8s-prod-us-east-1") -> Dict[str, Any]:
+    def fetch_cluster_metrics(self, cluster_id: str = "k8s-prod-us-east") -> Dict[str, Any]:
         return {
             "cluster_id": cluster_id,
             "cpu_utilization_pct": 42.8,
