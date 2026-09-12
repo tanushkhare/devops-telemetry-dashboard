@@ -1,6 +1,21 @@
 ﻿from pydantic import BaseModel, Field
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 from datetime import datetime
+
+class AuthorizeRequest(BaseModel):
+    user_id: str = Field(..., description="Identity principal / IAM subject")
+    role: str = Field(default="devops_engineer", description="Requested role: admin, devops_engineer, sre_lead, guest_viewer")
+    target_resource: str = Field(default="cluster/k8s-prod-us-east/nodes")
+
+class AuthorizeResponse(BaseModel):
+    user_id: str
+    access_granted: bool
+    assigned_role: str
+    client_ip: str
+    security_context: str
+    auth_token: Optional[str] = None
+    reason: str
+    timestamp: str
 
 class TokenRequest(BaseModel):
     client_id: str = Field(..., description="Service principal or client ID")
