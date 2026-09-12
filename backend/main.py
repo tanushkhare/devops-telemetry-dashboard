@@ -1,11 +1,11 @@
 ﻿from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.routers import iam
+from backend.app.routers import iam_router
 import uvicorn
 
 app = FastAPI(
-    title="DevOps Zero-Trust IAM & Telemetry Gateway API",
-    description="Role-Based Access Control (RBAC), client host origin verification, and Kubernetes telemetry harvester.",
+    title="DevOps Telemetry & Zero-Trust IAM Dashboard",
+    description="Kubernetes cluster metrics ingestion with token-based authentication.",
     version="1.0.0"
 )
 
@@ -17,7 +17,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(iam.router)
+app.include_router(iam_router.router)
 
 @app.get("/health")
 async def health_check():
