@@ -1,4 +1,33 @@
 ﻿import streamlit as st
+
+st.markdown("""
+    <style>
+        .stApp {
+            background-color: #090d16;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar .stSidebar {
+            background-color: #0f172a;
+            border-right: 1px solid #1e293b;
+        }
+        h1, h2, h3 {
+            color: #f8fafc;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .stButton>button {
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+            color: #090d16;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+import streamlit as st
 import requests
 import plotly.graph_objects as go
 
@@ -56,3 +85,4 @@ with col2:
             gauge = {"axis": {"range": [None, 100]}, "bar": {"color": "#38bdf8"}}
         ))
         st.plotly_chart(fig, use_container_width=True)
+
